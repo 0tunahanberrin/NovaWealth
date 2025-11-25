@@ -1,4 +1,4 @@
-> **NovaWealth**is a next-generation mobile banking platform that integrates fragmented financial service domains (Payments, Crypto, Lending, Investment) into a single seamless ecosystem. This project was built as a personal application of the tools and principles gained from the **University of Michigan - Fintech Innovations Specialization**.
+> **NovaWealth** is a next-generation mobile banking platform that integrates fragmented financial service domains (Payments, Crypto, Lending, Investment) into a single seamless ecosystem. This project was built as a personal application of the tools and principles gained from the **University of Michigan - Fintech Innovations Specialization**.
 
 ---
 
