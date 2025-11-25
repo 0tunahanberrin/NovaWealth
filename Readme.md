@@ -8,8 +8,8 @@ NovaWealth is built on four fully integrated verticals that collectively form it
 
 ### 📱 Module 1: Smart Wallet (PayTech)
 
-### 📱 Modül 2: Crypto Asset Hub (Blockchain)
+### 📱 Module 2: Crypto Asset Hub (Blockchain)
 
-### 📱 Modül 3: Dynamic Credit Scoring (CreditTech)
+### 📱 Module 3: Dynamic Credit Scoring (CreditTech)
 
-### 📱Modül 4: Robo-Advisor (AI & Investment)
+### 📱 Module 4: Robo-Advisor (AI & Investment)
