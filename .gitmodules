@@ -1,0 +1,3 @@
+[submodule "sql-case-studies"]
+	path = sql-case-studies
+	url = https://github.com/0tunahanberrin/SQL_Case_Studies_BA.git
