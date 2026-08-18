@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: NovaWealth Wallet API
+  version: 1.0.0
+  description: NovaWealth Akıllı Cüzdan (Smart Wallet) Modülü Servisleri. Sisteme paranın girdiği ve bakiyenin yönetildiği ana modüldür.
+
+paths:
+  /api/v1/wallet/top-up:
+    post:
+      summary: Cüzdana Bakiye Yükleme (Top-up)
+      description: Kullanıcının dışarıdan bir ödeme aracı (kayıtlı kartı) ile cüzdanına anında bakiye yüklemesini sağlar.
+      requestBody:
+        description: Ön yüzden gelen para yükleme talebi
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  example: "usr_987654321"
+                amount:
+                  type: number
+                  example: 500.00
+                currency:
+                  type: string
+                  example: "TRY"
+                sourceToken:
+                  type: string
+                  example: "tok_abc123xyz"
+      responses:
+        '200':
+          description: Yükleme Başarılı
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "SUCCESS"
+                  transactionId:
+                    type: string
+                    example: "txn_5544332211"
+                  newBalance:
+                    type: number
+                    example: 1250.50
+        '400':
+          description: Hata - İşlem reddedildi (Fraud veya Yetersiz Limit)
+
+  /api/v1/wallet/balance:
+    get:
+      summary: Anlık Bakiye Sorgulama
+      description: Uygulama açıldığında kullanıcının ana ekrandaki güncel cüzdan bakiyesini getirir.
+      parameters:
+        - in: query
+          name: userId
+          required: true
+          description: Bakiyesi sorgulanacak kullanıcının ID'si
+          schema:
+            type: string
+            example: "usr_987654321"
+      responses:
+        '200':
+          description: Bakiye Başarıyla Getirildi
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  walletId:
+                    type: string
+                    example: "wal_778899"
+                  currentBalance:
+                    type: number
+                    example: 1250.50
+                  currency:
+                    type: string
+                    example: "TRY"
+
+  /api/v1/wallet/transactions:
+    get:
+      summary: Hesap Hareketlerini Listeleme
+      description: Cüzdanın geçmiş işlem geçmişini ve dekontlarını tarih sırasına göre getirir.
+      parameters:
+        - in: query
+          name: userId
+          required: true
+          description: Geçmişi sorgulanacak kullanıcının ID'si
+          schema:
+            type: string
+            example: "usr_987654321"
+      responses:
+        '200':
+          description: İşlem Listesi
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: "txn_99999"
+                        type:
+                          type: string
+                          example: "TOP_UP"
+                        amount:
+                          type: number
+                          example: 500.00
+                        date:
+                          type: string
+                          example: "2026-08-18"
